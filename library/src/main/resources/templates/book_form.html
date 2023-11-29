@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100" data-bs-theme="auto">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ocasa Home</title>
+    <!--    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/dist/css/bootstrap.min.css}">-->
+
+    <!--     Bootstrap CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            background: url('[[@{/img/background2.jpg}]]') no-repeat center center fixed;
+            /*background: url('../static/img/background1.jpg') no-repeat center center fixed;*/
+            background-size: cover;
+        }
+
+        .cover-container {
+            background-color: rgba(255, 255, 255, 45%); /* Adjust the alpha value (for opacity) */
+        }
+
+        .main-content {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+            color: #333; /* Adjust the text color */
+        }
+
+        .main-content h1,
+        .main-content .lead,
+        .main-content .btn {
+            position: relative;
+            z-index: 2;
+        }
+
+        .navbar {
+            background-color: #c0ac8e !important; /* Set the background color for the navbar */
+            box-shadow: 0 2px 4px rgb(79, 67, 56); /* Add a shadow underneath the navbar */
+        }
+
+        .navbar-nav .nav-link {
+            color: #333 !important; /* Set the text color for the navbar links */
+        }
+
+        .logo {
+            max-height: 60px; /* Adjust the maximum height as needed */
+            width: auto; /* Allow the width to adjust proportionally */
+            margin-right: 10px; /* Add some margin to the right for spacing */
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center; /* Align items vertically in the center */
+        }
+
+        .brand-container {
+            flex-grow: 1; /* Allow the container to grow and take remaining space */
+            text-align: center;
+            display: flex;
+            justify-content: center; /* Align content horizontally in the center */
+            align-items: center; /* Align items vertically in the center */
+        }
+
+        .brand-container a {
+            text-decoration: none; /* Remove underlines from the anchor tag */
+            color: #333; /* Set text color for the brand */
+        }
+
+        .bottom-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px; /* Adjust as needed */
+        }
+
+        .bottom-buttons .btn {
+            width: 150px; /* Adjust the width as needed */
+            height: 150px; /* Adjust the height as needed */
+            font-size: 1.5rem; /* Adjust the font size as needed */
+        }
+
+        .navbar-buttons{
+            margin: 3px; /* Adjust as needed */
+        }
+
+        .navbar-buttons .btn {
+            padding: 10px 20px; /* Adjust padding as needed */
+            font-size: 1rem; /* Adjust font size as needed */
+
+        }
+    </style>
+</head>
+
+<body class="d-flex h-100 text-center">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+        <section class="containerNav">
+            <nav class="navbar navbar-expand-lg navbar-nav">
+                <div class="container-fluid">
+                    <div class="logo-container">
+                        <img class="containerImg logo" src="/img/logo.png" alt="Ocasa logo">
+                        <!--                    <img class="containerImg logo" src="../static/img/logo.png" alt="Ocasa logo">-->
+                    </div>
+
+                    <div class="brand-container">
+                        <a class="navbar-brand" href="/">OCASA</a>
+                    </div>
+
+                    <ul class="nav nav-underline">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/book">Books</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/author">Authors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/publisher">Publishers</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </section>
+    </header>
+
+    <main class="px-3 main-content">
+        <h1>Book Entry</h1>
+
+        <div class="container">
+            <form action="/book/entry" method="POST">
+                <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError" >
+                    <div class="card-body">
+                        <h5 class="card-title">Error 👎</h5>
+                        <p class="card-text" th:text="${error}"></p>
+                    </div>
+                </div>
+
+                <div th:if="${success != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
+                    <div class="card-body">
+                        <h5 class="card-title">Success!</h5>
+                        <p class="card-text" th:text="${success}"></p>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="mb-2">Book Information</label>
+                </div>
+
+                <div class="form-group my-3">
+                    <input type="text" class="form-control" name="title" placeholder="Book Title">
+                </div>
+
+                <div class="form-group my-3">
+                    <input type="number" required class="form-control" name="year" placeholder="Publishing Date">
+                </div>
+
+                <div class="form-group my-3">
+                    <input type="number" required class="form-control" name="copies" placeholder="Number of copies">
+                </div>
+
+                <div class="form-group my-3">
+
+                    <select name="authorId">
+
+                        <option>Select Author</option>
+
+                        <option th:each="author : ${authors}"
+                                th:value="${author.id}"
+                                th:text="${author.name}"
+                        />
+                    </select>
+                </div>
+
+                <div class="form-group my-3">
+                    <select name="publisherId">
+                        <option>Select Publishing House</option>
+                        <option th:each="publisher : ${publishers}"
+                                th:value="${publisher.id}"
+                                th:text="${publisher.name}"
+                        />
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3 botones">Submit</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="mt-auto text-dark-50">
+        <p>&copy;2023 Ocasa</p>
+    </footer>
+</div>
+<!--<script th:src="@{/webjars/bootstrap/5.3.2/dist/js/bootstrap.bundle.min.js}"></script>-->
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+

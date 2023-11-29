@@ -1,0 +1,66 @@
+/*
+ * Globals
+ */
+
+
+/* Custom default button */
+
+.btn-dark,
+.btn-dark:hover,
+.btn-dark:focus {
+    color: #333;
+    text-shadow: none; /* Prevent inheritance from `body` */
+}
+
+
+/*
+ * Base structure
+ */
+
+body {
+    background-color: #c0ac8e;
+    --body-text-color: #37474f;
+    text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+    box-shadow: inset 0 0 5rem rgb(79, 67, 56);
+}
+
+.cover-container {
+    max-width: 42em;
+}
+
+.containerImg{
+    max-width: 50%;
+    height: auto;
+}
+
+.logo{
+    max-width: 50%;
+    height: auto;
+}
+
+/*
+ * Header
+ */
+
+.navbar .nav-link {
+    color: rgba(255, 255, 255, .5);
+    border-bottom: .25rem solid transparent;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+    border-bottom-color: rgba(255, 255, 255, .25);
+}
+
+.navbar .nav-link + .nav-link {
+    margin-left: 1rem;
+}
+
+.navbar .active {
+    color: #fff;
+    border-bottom-color: #fff;
+}
+
+.table{
+    background-color: #c0ac8e;
+}
