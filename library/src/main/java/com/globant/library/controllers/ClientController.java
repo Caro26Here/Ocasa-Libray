@@ -28,7 +28,6 @@ public class ClientController {
         return "client_form.html";
     }
 
-    @Transactional
     @PostMapping("/entry")
     public String entry(@RequestParam(required = false) String firstName,@RequestParam(required = false) String lastName,
                         @RequestParam(required = false) String phone, @RequestParam(required = false) String email,
@@ -72,7 +71,6 @@ public class ClientController {
         return "client_edit.html";
     }
 
-    @Transactional
     @PostMapping("/edit/{id}")
     public String edit(@PathVariable(required = false) String id, @PathVariable(required = false) String firstName,
                        @PathVariable(required = false) String lastName, @PathVariable(required = false) String phone,

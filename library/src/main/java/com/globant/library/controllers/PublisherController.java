@@ -31,7 +31,6 @@ public class PublisherController {
         return "publisher_form.html";
     }
 
-    @Transactional
     @PostMapping("/entry")
     public String entry(@RequestParam(required = true) String name){
 
@@ -70,7 +69,6 @@ public class PublisherController {
         return "publisher_edit.html";
     }
 
-    @Transactional
     @PostMapping("/edit/{id}")
     public String edit(@PathVariable String id, String name, ModelMap model){
         try{

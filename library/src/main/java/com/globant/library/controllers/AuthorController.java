@@ -30,7 +30,6 @@ public class AuthorController {
         return "author_form.html";
     }
 
-    @Transactional
     @PostMapping("/entry")
     public String entry(@RequestParam(required = true) String name){
         try {
@@ -67,7 +66,6 @@ public class AuthorController {
         return "author_edit.html";
     }
 
-    @Transactional
     @PostMapping("/edit/{id}")
     public String edit(@PathVariable String id, String name, ModelMap model){
         try{
